@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th=	"http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>하윙 나는 오브젝트.html</h1>
+	<span th:text="${session.user.name}"></span>	<br>
+	<span th:text="${session.user.addr}"></span>	<br>
+	
+	<div th:object="${session.user}">
+		<div th:text="*{name}"></div>
+		<div th:text="*{addr}"></div>
+	</div> 
+	<hr>
+	
+	<span th:text="${user.name}"></span>	<br>
+	<span th:text="${user.addr}"></span>	<br>
+	
+	<div th:object="${user}">
+		<div th:text="*{name}"></div>
+		<div th:text="*{addr}"></div>
+	</div> 
+	<hr>
+	
+	<p th:text="#{url.naver}"></p>
+	<hr>
+	
+	<a th:href="#{url.naver}" th:text="#{url.naver}"></a><br>
+	<a th:href="@{home}" th:text="home"></a><br>	<!-- == <a href="home">home</a> 랑 똑같음 -->
+	<a th:href="@{'/home/' + #{url.naver} }" >url.naver</a><br>
+	<a th:href="@{'/home/' + ${user.name}}">user.name</a><br>
+	<a th:href="@{home(name=${user.name}) }">name=user.name</a><br>
+	<a th:href="@{home(name=${user.name},addr=${user.addr})}">
+  		name=user.name, addr=user.addr
+	</a>
+	<hr>
+	
+	[[${msg}]]
+	<div th:text="${msg}"></div>
+	<div th:utext="${msg}"></div>
+	
+
+	
+	
+	
+</body>
+</html>
